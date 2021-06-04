@@ -10,6 +10,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Digital Collectible</title>
+
+    <script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="application/javascript"></script>
+    <script type="text/javascript">
+      const CONTRACT_ADDRESS = '0x0165878A594ca255338adfa4d48449f69242Eb8F';
+    </script>
+    <script src="/contract-metadata.js" type="application/javascript"></script>
+    <script src="/app.js" type="application/javascript"></script>
 </head>
 
 <body>
@@ -56,10 +64,12 @@
 
         <section>
             <form>
-
+              <div id="form">
                 <label for="input1">Enter your password:</label>
-                <input type="text" id="input1" name="Password" size="20" placeholder="Password">
-                <button type="submit">Submit</button>
+                <input type="text" id="code" name="Password" size="20" placeholder="Password">
+                <button type="submit" class="start-claim">Submit</button>
+              </div>
+              <div id="success"></div>
             </form>
         </section>
 
