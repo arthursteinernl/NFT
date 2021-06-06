@@ -14,7 +14,9 @@
     <script src="https://unpkg.com/@metamask/detect-provider/dist/detect-provider.min.js"></script>
     <script src="https://cdn.ethers.io/lib/ethers-5.0.umd.min.js" type="application/javascript"></script>
     <script type="text/javascript">
-      const CONTRACT_ADDRESS = '0x0165878A594ca255338adfa4d48449f69242Eb8F';
+      const CONTRACT_ADDRESS = '0x5FbDB2315678afecb367f032d93F642f64180aa3';
+      const TOKEN_SYMBOL = '';
+      const TOKEN_DECIMALS = '';
     </script>
     <script src="/contract-metadata.js" type="application/javascript"></script>
     <script src="/app.js" type="application/javascript"></script>
@@ -28,20 +30,20 @@
                 <li><a href="http://studiocontinuo.com">Studio Continuo &nearr;</a></li>
             </ul>
         </nav>
-    
+
 
     <img alt="Logo" src="continuologo.jpeg" height="180">
     <h1>Collect your Digital Artwork</h1>
     <p>The boundaries between virtual and physical spaces are dissolving. We can stroll through virtual museums and collect digital art in the form of nun-fungible tokens (NFTs).</p>
 
-    <p>As part of the exhibition ‘Don’t Turn Around’ we have created a free limited edition of 25 digital artworks. The works can only be collected if you physically visit the exhibition. Once you have obtained your digital collectible, you are able to store it in your digital art collection or show it in a gallery in a decentralized virtual world such as <a href="http://cryptovoxels.com">Cryptovoxels</a> and <a href="https://decentraland.org">Decentraland</a>.</p> 
-    </header>       
+    <p>As part of the exhibition ‘Don’t Turn Around’ we have created a free limited edition of 25 digital artworks. The works can only be collected if you physically visit the exhibition. Once you have obtained your digital collectible, you are able to store it in your digital art collection or show it in a gallery in a decentralized virtual world such as <a href="http://cryptovoxels.com">Cryptovoxels</a> and <a href="https://decentraland.org">Decentraland</a>.</p>
+    </header>
 
     <main>
 
    <header> <h2>How to collect your work</h2></header>
     <section>
-                
+
     <aside>
         <h3>Step 1</h3>
         <p> Register here for your visit to the exhibition ‘Don’t Turn Around’ and indicate you would like to receive your digital artwork.</p>
@@ -57,25 +59,44 @@
        <aside>
         <h3>Step 4</h3>
         <p>Enter your password in the field below and connect it to your MetaMask. You will be asked to pay a small fee to the blockchain to make an ownership contract </p>
-    </aside>  
+    </aside>
 
     </section>
 
 
         <section>
             <form>
-              <div id="form">
-                <label for="input1">Enter your password:</label>
-                <input type="text" id="code" name="Password" size="20" placeholder="Password">
-                <button type="submit" class="start-claim">Submit</button>
+
+              <div id="start">
+                <button>Start</button>
               </div>
-              <div id="success"></div>
+
+              <div id="password-form" style="display:none">
+                <label for="input1">Enter your password:</label>
+                <input type="text" id="code" name="Password" autocomplete="off" size="20" placeholder="Password">
+                <button type="submit">Submit</button>
+              </div>
+
+              <div id="success" style="display:none">
+                Success
+              </div>
+              <div id="mined" style="display:none">
+                mined
+              </div>
+
+              <div id="ownership" style="display:none">
+                You own TokenID: #<span class="token-id"></span>
+              </div>
+
+              <div id="metamask-required" style="display:none">
+                MetaMask is required
+              </div>
             </form>
         </section>
 
-           
-           
-           
+
+
+
     </main>
     <footer>
         <hr>
