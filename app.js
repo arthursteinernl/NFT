@@ -52,10 +52,9 @@ async function claim() {
     return;
   }
   window.TokenContract.claim(code).then(tx => {
-    document.querySelector('#password-formform').style.display = 'none';
+    document.querySelector('#password-form').style.display = 'none';
     document.querySelector('#success').style.display = 'block';
-    tx.wait().then(() => {
-      document.querySelector('#success').style.display = 'none';
+    tx.wait(2).then(() => {
       document.querySelector('#mined').style.display = 'block';
       loadOwnership();
     });
@@ -99,8 +98,8 @@ async function loadOwnership() {
       }
       // just load the first token and display the details
       window.TokenContract.tokenOfOwnerByIndex(address,0).then(tokenId => {
-        document.querySelector('#ownership .token-id').innerHTML = tokenId.toString();
-        document.querySelector('#ownership').style.display = 'block';
+        document.querySelector('#success .token-id').innerHTML = tokenId.toString();
+        document.querySelector('#success').style.display = 'block';
         document.querySelector('#password-form').style.display = 'none';
         document.querySelector('#start').style.display = 'none';
       });
