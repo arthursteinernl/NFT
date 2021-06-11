@@ -59,14 +59,16 @@ async function claim() {
       loadOwnership();
     });
   }).catch(err => {
+    let message = err.message;
     if (err.data && err.data.message) {
-      if (err.data.message.match(/Invalid Code/i)) {
-        alert('Invalid code');
-      } else if (err.data.message.match(/Already Claimed/i)) {
-        alert('Already claimed');
-      }
+      message = err.data.message;
+    }
+    if (message.match(/Invalid Code/i)) {
+      alert('Invalid code');
+    } else if (message.match(/Already Claimed/i)) {
+      alert('Already claimed');
     } else {
-      alert("Failed to claim: " + err.message);
+      alert("Failed to claim: " + message);
     }
   });
 }
@@ -98,10 +100,18 @@ async function loadOwnership() {
       }
       // just load the first token and display the details
       window.TokenContract.tokenOfOwnerByIndex(address,0).then(tokenId => {
+        document.querySelectorAll('#success .token-id').forEach((el) => {
+          el.innerHTML = tokenId.toString();
+        });
         document.querySelector('#success .token-id').innerHTML = tokenId.toString();
         document.querySelector('#success').style.display = 'block';
         document.querySelector('#password-form').style.display = 'none';
         document.querySelector('#start').style.display = 'none';
+        const link = "https://opensea.io/assets/" + window.TokenContract.address + "/" + tokenId.toString();
+        document.querySelectorAll('.opensea-link').forEach((el) => {
+          el.href = link;
+        });
+        document.querySelector('#mined').style.display = 'block';
       });
     });
   });
