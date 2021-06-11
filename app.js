@@ -59,6 +59,7 @@ async function claim() {
       loadOwnership();
     });
   }).catch(err => {
+    console.log(err);
     let message = err.message;
     if (err.data && err.data.message) {
       message = err.data.message;
