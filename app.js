@@ -54,8 +54,10 @@ async function claim() {
   window.TokenContract.claim(code).then(tx => {
     document.querySelector('#password-form').style.display = 'none';
     document.querySelector('#success').style.display = 'block';
+    document.querySelector('#mining').style.display = 'block';
     tx.wait(2).then(() => {
       document.querySelector('#mined').style.display = 'block';
+      document.querySelector('#mining').style.display = 'none';
       loadOwnership();
     });
   }).catch(err => {
